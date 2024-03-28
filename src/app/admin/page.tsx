@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import db from "@/db/db";
 import { formatCurrency, formatNumber } from "@/lib/formatters";
 
@@ -48,7 +47,13 @@ async function getProductData() {
   return { activeCount, inactiveCount };
 }
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  const [salesData, userData, productData] = await Promise.all([
+    getSalesData(),
+    getUserData(),
+    getProductData(),
+  ]);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <DashboardCard
