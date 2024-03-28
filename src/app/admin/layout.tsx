@@ -1,4 +1,5 @@
 import React from "react";
+import { Nav, NavLink } from "@/components/Nav";
 
 export default function AdminLayout({
   children,
@@ -7,7 +8,12 @@ export default function AdminLayout({
 }>) {
   return (
     <>
-      <Nav></Nav>
+      <Nav>
+        <NavLink href="/admin">Dashboard</NavLink>
+        <NavLink href="/admin/products">Products</NavLink>
+        <NavLink href="/admin/products">Customers</NavLink>
+        <NavLink href="/admin/products">Sales</NavLink>
+      </Nav>
       <div className="container my-6">{children}</div>
     </>
   );
